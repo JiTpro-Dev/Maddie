@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
-        /* Reset & base styling */
         html, body {
             height: 100%;
             margin: 0;
+            overflow: hidden;
         }
 
         body {
@@ -22,8 +22,49 @@
             color: #ffffff;
         }
 
-        /* Content container */
+        /* Balloon container */
+        .balloons {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .balloon {
+            position: absolute;
+            bottom: -150px;
+            width: 60px;
+            height: 80px;
+            border-radius: 50% 50% 50% 50%;
+            animation: floatUp linear forwards;
+        }
+
+        .balloon::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -25px;
+            width: 2px;
+            height: 25px;
+            background: rgba(255,255,255,0.6);
+            transform: translateX(-50%);
+        }
+
+        @keyframes floatUp {
+            from {
+                transform: translateY(0) translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-120vh) translateX(40px);
+                opacity: 0.9;
+            }
+        }
+
+        /* Content box */
         .container {
+            position: relative;
+            z-index: 2;
             max-width: 800px;
             margin: 20px;
             padding: 50px 40px;
@@ -36,13 +77,11 @@
         h1 {
             font-size: 2.75rem;
             margin-bottom: 0.5em;
-            letter-spacing: 0.03em;
         }
 
         p {
             font-size: 1.15rem;
             line-height: 1.7;
-            margin-bottom: 1.5em;
         }
 
         footer {
@@ -51,7 +90,6 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
-        /* Mobile adjustments */
         @media (max-width: 600px) {
             .container {
                 padding: 35px 25px;
@@ -60,29 +98,66 @@
             h1 {
                 font-size: 2.1rem;
             }
-
-            p {
-                font-size: 1.05rem;
-            }
         }
     </style>
 </head>
 
 <body>
+
+    <!-- Balloons -->
+    <div class="balloons" id="balloons"></div>
+
+    <!-- Main content -->
     <div class="container">
-        <h1>Happy Birthday, Maddie!</h1>
+        <h1>Happy Birthday, Maddie! 🎉</h1>
 
         <p>
-            Welcome to your own personal webpage. Congratulations, you are famous and you're only 7!
+            This page was made just for you.
         </p>
 
         <p>
-            This space is made with love, just for you, from Grandma and Grandpa. Please check back often for updates and fun things from us. You are so special to us and we love you more than you can ever know!
+            We love you so much and hope your day is full of fun, smiles, and balloons!
         </p>
 
         <footer>
-            © 2025
+            ❤️
         </footer>
     </div>
+
+    <script>
+        const colors = [
+            "#ff6b6b",
+            "#ffd93d",
+            "#6bcBef",
+            "#6bcb77",
+            "#c77dff",
+            "#ff9f1c"
+        ];
+
+        function createBalloon() {
+            const balloon = document.createElement("div");
+            balloon.className = "balloon";
+
+            const size = Math.random() * 30 + 40;
+            balloon.style.width = size + "px";
+            balloon.style.height = size * 1.2 + "px";
+
+            balloon.style.left = Math.random() * 100 + "vw";
+            balloon.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+            const duration = Math.random() * 10 + 10;
+            balloon.style.animationDuration = duration + "s";
+
+            document.getElementById("balloons").appendChild(balloon);
+
+            setTimeout(() => {
+                balloon.remove();
+            }, duration * 1000);
+        }
+
+        setInterval(createBalloon, 800);
+    </script>
+
 </body>
 </html>
+
