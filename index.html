@@ -4,30 +4,85 @@
     <meta charset="UTF-8">
     <title>Maddie</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
-        body {
+        /* Reset & base styling */
+        html, body {
+            height: 100%;
             margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-            background: #fafafa;
-            color: #333;
         }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background: url("background.jpg") no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+        }
+
+        /* Content container */
         .container {
             max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
+            margin: 20px;
+            padding: 50px 40px;
             text-align: center;
+            background: rgba(0, 0, 0, 0.45);
+            border-radius: 14px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
         }
+
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.75rem;
             margin-bottom: 0.5em;
+            letter-spacing: 0.03em;
         }
+
         p {
-            font-size: 1.1rem;
-            line-height: 1.6;
+            font-size: 1.15rem;
+            line-height: 1.7;
+            margin-bottom: 1.5em;
         }
+
         footer {
-            margin-top: 60px;
+            margin-top: 40px;
             font-size: 0.85rem;
-            color: #777;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 600px) {
+            .container {
+                padding: 35px 25px;
+            }
+
+            h1 {
+                font-size: 2.1rem;
+            }
+
+            p {
+                font-size: 1.05rem;
+            }
         }
     </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Maddie</h1>
+
+        <p>
+            Welcome to Maddie’s personal webpage.
+        </p>
+
+        <p>
+            This space is made with love, just for her.
+        </p>
+
+        <footer>
+            © 2025
+        </footer>
+    </div>
+</body>
+</html>
